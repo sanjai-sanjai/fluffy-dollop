@@ -62,6 +62,10 @@ export default function EntrepreneurshipPage() {
       xpEarned={0}
     >
       <div className="slide-up" style={{ animationDelay: "150ms" }}>
+        <EntrepreneurshipActiveLearning />
+      </div>
+
+      <div className="slide-up" style={{ animationDelay: "200ms" }}>
         <div className="mb-4 rounded-xl border border-accent/30 bg-accent/10 p-4">
           <p className="text-sm text-accent-foreground">
             🔒 Complete 50% of Financial Literacy to unlock this subject!
