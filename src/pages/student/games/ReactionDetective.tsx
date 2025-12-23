@@ -437,6 +437,9 @@ export default function ReactionDetective() {
                   {gameState.hasReacted && !gameState.isReacting && (
                     <div className="text-center space-y-3">
                       <p className="text-lg font-bold text-foreground">Reaction Complete!</p>
+                      <div className="bg-muted/50 rounded-lg p-3 border-2 border-secondary/30 space-y-2">
+                        <p className="text-sm font-semibold text-foreground">Product Color: <span className="text-secondary font-bold">{currentReaction.resultColor}</span></p>
+                      </div>
                       <p className="text-sm text-muted-foreground">What did you observe?</p>
                     </div>
                   )}
