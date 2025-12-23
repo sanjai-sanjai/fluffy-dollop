@@ -49,7 +49,7 @@ export function GameIntroModal({
           </div>
         </DialogHeader>
 
-        <div className="space-y-6 px-6 pb-6">
+        <div className="space-y-6">
           {/* What You'll Learn */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
