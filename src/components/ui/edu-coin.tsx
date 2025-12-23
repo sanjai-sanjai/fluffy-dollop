@@ -53,6 +53,9 @@ export function EduCoin({
         style={{
           aspectRatio: "1 / 1",
           objectFit: "contain",
+          "@media (max-width: 640px)": {
+            width: "20px",
+          },
         }}
       />
 
