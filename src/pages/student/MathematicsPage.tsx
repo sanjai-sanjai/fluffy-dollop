@@ -148,11 +148,7 @@ export default function MathematicsPage() {
       </SubjectLayout>
 
       {/* Game Components */}
-      {activeGame === "balance" && <EquationBalance onClose={handleGameClose} />}
       {activeGame === "fractions" && <FractionForge onClose={handleGameClose} />}
-      {activeGame === "lock" && <PatternLock onClose={handleGameClose} />}
-      {activeGame === "geometry" && <GeometryBuilder onClose={handleGameClose} />}
-      {activeGame === "probability" && <ProbabilityRun onClose={handleGameClose} />}
       {activeGame === "pattern-master" && <PatternMaster onClose={handleGameClose} />}
       {activeGame === "budget" && <VillageBudgetPlanner onClose={handleGameClose} />}
       {activeGame === "heist" && <MathHeist onClose={handleGameClose} />}
