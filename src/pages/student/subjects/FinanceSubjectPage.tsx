@@ -484,8 +484,8 @@ export default function FinanceSubjectPage() {
             </Card>
 
             {/* Gamified Learning Card */}
-            <Card 
-              className="glass-card border border-accent/30 p-6 hover:scale-102 transition-transform cursor-pointer slide-up"
+            <Card
+              className="glass-card border border-accent/30 p-6 hover:scale-105 transition-transform cursor-pointer slide-up"
               onClick={() => setLearningMode("gamified")}
               style={{ animationDelay: "150ms" }}
             >
