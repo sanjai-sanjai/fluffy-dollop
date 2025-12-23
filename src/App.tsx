@@ -241,6 +241,21 @@ const App = () => (
                     <TechnologyPage />
                   </ProtectedRoute>
                 } />
+                <Route path="/student/technology/village-light-up" element={
+                  <ProtectedRoute allowedRoles={["student"]}>
+                    <TechnologyVillageLightUp />
+                  </ProtectedRoute>
+                } />
+                <Route path="/student/technology/system-builder" element={
+                  <ProtectedRoute allowedRoles={["student"]}>
+                    <TechnologySystemBuilder />
+                  </ProtectedRoute>
+                } />
+                <Route path="/student/technology/debug-dungeon" element={
+                  <ProtectedRoute allowedRoles={["student"]}>
+                    <TechnologyDebugDungeon />
+                  </ProtectedRoute>
+                } />
                 <Route path="/student/finance" element={
                   <ProtectedRoute allowedRoles={["student"]}>
                     <FinancePage />
