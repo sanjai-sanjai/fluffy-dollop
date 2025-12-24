@@ -59,10 +59,16 @@ export function AppLayout({
               )}
             </div>
 
-            {/* Wallet Balance for students */}
-            {role === "student" && typeof displayCoins === "number" && (
-              <WalletBalanceHeader balance={displayCoins} />
-            )}
+            {/* Right side actions */}
+            <div className="flex items-center gap-2">
+              {/* Language Switcher - Available for all roles */}
+              <LanguageSwitcherButton />
+
+              {/* Wallet Balance for students */}
+              {role === "student" && typeof displayCoins === "number" && (
+                <WalletBalanceHeader balance={displayCoins} />
+              )}
+            </div>
           </div>
 
           {/* Breadcrumb */}
