@@ -43,6 +43,7 @@ const FILTER_ORDER: FilterType[] = [
 ];
 
 export default function RewardsPage() {
+  const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
   const [showHistory, setShowHistory] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -74,15 +75,15 @@ export default function RewardsPage() {
       setShowSuccess(true);
       setIsSpending(false);
       setTimeout(() => setShowSuccess(false), 4000);
-      toast.success(`🎉 You redeemed ${product.name}!`);
+      toast.success(t('rewards.redeemSuccess', { name: product.name }));
     } else {
       const needed = coinsToUnlock(currentBalance, product.educoinsCost);
-      toast.error(`Need ${needed} more EduCoins!`);
+      toast.error(t('rewards.needMoreCoins', { needed }));
     }
   };
 
   return (
-    <AppLayout role="student" playCoins={currentBalance} title="Rewards Marketplace">
+    <AppLayout role="student" playCoins={currentBalance} title={t('rewards.rewardsMarketplace')}>
       <style>{`
         /* ============ BALANCE SECTION STYLES ============ */
         .balance-section {
