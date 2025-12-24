@@ -7,6 +7,7 @@ import { lazy, Suspense } from "react";
 import { OfflineIndicator, InstallPrompt } from "@/components/pwa";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { WalletProvider } from "@/contexts/WalletContext";
+import { I18nProvider } from "@/contexts/I18nContext";
 import { ProtectedRoute } from "@/components/auth";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import '@/i18n/config';
@@ -108,15 +109,16 @@ const PageLoader = () => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <WalletProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <OfflineIndicator />
-          <InstallPrompt />
-          <BrowserRouter>
-            <Suspense fallback={<PageLoader />}>
+    <I18nProvider>
+      <AuthProvider>
+        <WalletProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <OfflineIndicator />
+            <InstallPrompt />
+            <BrowserRouter>
+              <Suspense fallback={<PageLoader />}>
               <Routes>
                 {/* Splash & Auth */}
                 <Route path="/" element={<Navigate to="/splash" replace />} />
@@ -497,11 +499,12 @@ const App = () => (
                 {/* Catch-all */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </TooltipProvider>
-      </WalletProvider>
-    </AuthProvider>
+              </Suspense>
+            </BrowserRouter>
+          </TooltipProvider>
+        </WalletProvider>
+      </AuthProvider>
+    </I18nProvider>
   </QueryClientProvider>
 );
 

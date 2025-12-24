@@ -2,6 +2,7 @@ import { AppLayout } from "@/components/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EduCoin, EduCoinDisplay } from "@/components/ui/edu-coin";
+import { useTranslation } from "react-i18next";
 import {
   Lock,
   TrendingUp,
@@ -42,6 +43,7 @@ const FILTER_ORDER: FilterType[] = [
 ];
 
 export default function RewardsPage() {
+  const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
   const [showHistory, setShowHistory] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -73,15 +75,15 @@ export default function RewardsPage() {
       setShowSuccess(true);
       setIsSpending(false);
       setTimeout(() => setShowSuccess(false), 4000);
-      toast.success(`🎉 You redeemed ${product.name}!`);
+      toast.success(t('rewards.redeemSuccess', { name: product.name }));
     } else {
       const needed = coinsToUnlock(currentBalance, product.educoinsCost);
-      toast.error(`Need ${needed} more EduCoins!`);
+      toast.error(t('rewards.needMoreCoins', { needed }));
     }
   };
 
   return (
-    <AppLayout role="student" playCoins={currentBalance} title="Rewards Marketplace">
+    <AppLayout role="student" playCoins={currentBalance} title={t('rewards.rewardsMarketplace')}>
       <style>{`
         /* ============ BALANCE SECTION STYLES ============ */
         .balance-section {
@@ -334,23 +336,23 @@ export default function RewardsPage() {
 
               <div className="flex items-center justify-center gap-2 mb-3">
                 <Sparkles className="h-6 w-6 text-accent animate-pulse" />
-                <h3 className="font-display text-3xl text-foreground">Awesome!</h3>
+                <h3 className="font-display text-3xl text-foreground">{t('rewards.awesome')}</h3>
                 <Sparkles className="h-6 w-6 text-accent animate-pulse" />
               </div>
 
-              <p className="text-lg text-muted-foreground mb-2">You earned this by learning!</p>
+              <p className="text-lg text-muted-foreground mb-2">{t('rewards.earnedByLearning')}</p>
 
               <p className="text-base text-accent font-bold mb-4">{redeemedItem}</p>
 
               <div className="bg-secondary/10 rounded-xl p-3 mb-6 flex items-center justify-center gap-2">
                 <EduCoin size="sm" />
                 <p className="text-sm text-muted-foreground">
-                  <span className="font-bold text-secondary">{redeemedPrice}</span> EduCoins Spent
+                  <span className="font-bold text-secondary">{redeemedPrice}</span> {t('rewards.eduCoins')} {t('rewards.spent')}
                 </p>
               </div>
 
               <p className="text-sm text-muted-foreground/70 mb-6">
-                Your reward will be delivered soon 🎁
+                {t('rewards.awesome')} 🎁
               </p>
 
               <Button
@@ -358,7 +360,7 @@ export default function RewardsPage() {
                 className="w-full bg-gradient-to-r from-accent to-accent/80 text-accent-foreground hover:from-accent/90 hover:to-accent/70"
               >
                 <Check className="h-4 w-4 mr-2" />
-                Continue Shopping
+                {t('rewards.continueShopping')}
               </Button>
             </div>
           </div>
@@ -381,14 +383,14 @@ export default function RewardsPage() {
               <div className="balance-card-primary">
                 {/* Left Column: Text Content */}
                 <div className="balance-content">
-                  <div className="balance-label">Balance</div>
+                  <div className="balance-label">{t('rewards.balance')}</div>
                   <div className="balance-amount-row">
                     <span className="balance-amount">{currentBalance.toLocaleString()}</span>
                     <div className="balance-coin">
                       <EduCoin size="lg" imgClassName="edu-coin-balance-lg" />
                     </div>
                   </div>
-                  <div className="balance-unit">EduCoins</div>
+                  <div className="balance-unit">{t('rewards.eduCoins')}</div>
                 </div>
 
                 {/* Right Column: Mascot Illustration */}

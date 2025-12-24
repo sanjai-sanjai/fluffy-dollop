@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { AppLayout } from "@/components/navigation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -111,6 +112,7 @@ export default function TasksPage() {
   // STATE & HOOKS
   // =========================================================================
 
+  const { t } = useTranslation();
   const { useTasks: useTasksHook } = { useTasks: () => {} };
   const {
     allTasks,
@@ -132,6 +134,16 @@ export default function TasksPage() {
   } = useTasks();
 
   const { wallet } = usePlayCoins();
+
+  // Get translated category labels
+  const getCategoryLabel = (category: string) => {
+    return t(`tasks.categories.${category}`, category);
+  };
+
+  // Get translated status label
+  const getStatusLabel = (status: string) => {
+    return t(`tasks.status.${status}`, status);
+  };
   const [showProofModal, setShowProofModal] = useState(false);
   const [showTaskDetail, setShowTaskDetail] = useState(false);
   const [activeFilter, setActiveFilter] = useState<TaskCategory | "all">("all");
@@ -252,7 +264,7 @@ export default function TasksPage() {
   // =========================================================================
 
   return (
-    <AppLayout role="student" playCoins={wallet?.balance || 0} title="Tasks">
+    <AppLayout role="student" playCoins={wallet?.balance || 0} title={t('common.tasks')}>
       {/* MODALS */}
       {selectedTask && (
         <>
@@ -290,9 +302,9 @@ export default function TasksPage() {
         <div className="slide-up space-y-4">
           <div className="glass-card rounded-2xl p-5 border border-border">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="font-heading text-2xl font-bold text-foreground">Your Tasks</h2>
+              <h2 className="font-heading text-2xl font-bold text-foreground">{t('tasks.yourTasks')}</h2>
               <Badge className="bg-secondary/20 text-secondary border-secondary/30">
-                {taskStats.completed}/{userTasks.length} Done
+                {taskStats.completed}/{userTasks.length} {t('tasks.status.completed')}
               </Badge>
             </div>
 
@@ -318,7 +330,7 @@ export default function TasksPage() {
                   <p className="font-heading text-2xl font-bold text-secondary">
                     {taskStats.completed}
                   </p>
-                  <p className="text-xs font-medium text-foreground">Completed</p>
+                  <p className="text-xs font-medium text-foreground">{t('tasks.status.completed')}</p>
                   <div className={`h-1 rounded-full transition-all ${selectedStatusFilter === "completed" ? "w-8 bg-secondary" : "w-4 bg-border"}`}></div>
                 </div>
               </button>
@@ -336,7 +348,7 @@ export default function TasksPage() {
                   <p className="font-heading text-2xl font-bold text-accent">
                     {taskStats.inProgress}
                   </p>
-                  <p className="text-xs font-medium text-foreground">Active</p>
+                  <p className="text-xs font-medium text-foreground">{t('tasks.status.inProgress')}</p>
                   <div className={`h-1 rounded-full transition-all ${selectedStatusFilter === "active" ? "w-8 bg-accent" : "w-4 bg-border"}`}></div>
                 </div>
               </button>
@@ -354,7 +366,7 @@ export default function TasksPage() {
                   <p className="font-heading text-2xl font-bold text-primary">
                     {taskStats.available}
                   </p>
-                  <p className="text-xs font-medium text-foreground">Available</p>
+                  <p className="text-xs font-medium text-foreground">{t('tasks.status.ready')}</p>
                   <div className={`h-1 rounded-full transition-all ${selectedStatusFilter === "available" ? "w-8 bg-primary" : "w-4 bg-border"}`}></div>
                 </div>
               </button>
@@ -362,14 +374,14 @@ export default function TasksPage() {
 
             {/* MOTIVATIONAL MESSAGE */}
             <p className="text-xs text-muted-foreground mt-4">
-              Complete tasks to earn rewards and level up! 🚀
+              {t('tasks.completeTasksToEarn')}
             </p>
           </div>
         </div>
 
         {/* CATEGORY FILTERS */}
         <div className="slide-up space-y-3" style={{ animationDelay: "50ms" }}>
-          <p className="text-sm font-medium text-foreground px-1">Filter by category</p>
+          <p className="text-sm font-medium text-foreground px-1">{t('common.dashboard')}</p>
           <div className="flex gap-2 overflow-x-auto pb-2">
             {(["all", "family", "village", "subject", "personal"] as const).map((filter) => {
               const isAll = filter === "all";
@@ -387,7 +399,7 @@ export default function TasksPage() {
                       : "glass-card border border-border text-muted-foreground hover:border-primary/50"
                   }`}
                 >
-                  {isAll ? "All Tasks" : config?.label}
+                  {isAll ? t('tasks.yourTasks') : getCategoryLabel(filter)}
                 </button>
               );
             })}
