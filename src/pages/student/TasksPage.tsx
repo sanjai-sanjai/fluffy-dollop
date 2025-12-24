@@ -330,7 +330,7 @@ export default function TasksPage() {
                   <p className="font-heading text-2xl font-bold text-secondary">
                     {taskStats.completed}
                   </p>
-                  <p className="text-xs font-medium text-foreground">Completed</p>
+                  <p className="text-xs font-medium text-foreground">{t('tasks.status.completed')}</p>
                   <div className={`h-1 rounded-full transition-all ${selectedStatusFilter === "completed" ? "w-8 bg-secondary" : "w-4 bg-border"}`}></div>
                 </div>
               </button>
@@ -348,7 +348,7 @@ export default function TasksPage() {
                   <p className="font-heading text-2xl font-bold text-accent">
                     {taskStats.inProgress}
                   </p>
-                  <p className="text-xs font-medium text-foreground">Active</p>
+                  <p className="text-xs font-medium text-foreground">{t('tasks.status.inProgress')}</p>
                   <div className={`h-1 rounded-full transition-all ${selectedStatusFilter === "active" ? "w-8 bg-accent" : "w-4 bg-border"}`}></div>
                 </div>
               </button>
@@ -366,7 +366,7 @@ export default function TasksPage() {
                   <p className="font-heading text-2xl font-bold text-primary">
                     {taskStats.available}
                   </p>
-                  <p className="text-xs font-medium text-foreground">Available</p>
+                  <p className="text-xs font-medium text-foreground">{t('tasks.status.ready')}</p>
                   <div className={`h-1 rounded-full transition-all ${selectedStatusFilter === "available" ? "w-8 bg-primary" : "w-4 bg-border"}`}></div>
                 </div>
               </button>
@@ -374,7 +374,7 @@ export default function TasksPage() {
 
             {/* MOTIVATIONAL MESSAGE */}
             <p className="text-xs text-muted-foreground mt-4">
-              Complete tasks to earn rewards and level up! 🚀
+              {t('tasks.completeTasksToEarn')}
             </p>
           </div>
         </div>
