@@ -220,7 +220,7 @@ export default function RewardsPage() {
               {/* Primary Wallet Bar */}
               <div className="flex flex-row">
                 <div
-                  className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl mb-6 border border-accent/20"
+                  className="balance-card bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl mb-6 border border-accent/20"
                   style={{
                     padding: "24px",
                   }}
