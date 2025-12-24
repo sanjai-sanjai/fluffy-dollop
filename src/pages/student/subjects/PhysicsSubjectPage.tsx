@@ -95,10 +95,10 @@ export default function PhysicsSubjectPage() {
               </div>
               <AnimatedProgress value={totalProgress} variant="default" />
               <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span>{completedLevels}/{levels.length} Levels Complete</span>
+                <span>{completedLevels}/{levels.length} {t('learning.active')}</span>
                 <GameBadge variant="primary" size="sm">
                   <Trophy className="h-3 w-3 mr-1" />
-                  Intermediate
+                  {t('common.intermediate')}
                 </GameBadge>
               </div>
             </div>
