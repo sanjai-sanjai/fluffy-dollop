@@ -527,19 +527,19 @@ export default function TasksPage() {
                               {completionStatus === "verified" && (
                                 <>
                                   <CheckCircle2 className="h-4 w-4" />
-                                  ✅ Verified by Teacher
+                                  {t('tasks.verifiedByTeacher')}
                                 </>
                               )}
                               {completionStatus === "pending" && (
                                 <>
                                   <Clock className="h-4 w-4" />
-                                  ⏳ Pending Verification
+                                  {t('tasks.pendingVerification')}
                                 </>
                               )}
                               {completionStatus === "rejected" && (
                                 <>
                                   <AlertCircle className="h-4 w-4" />
-                                  ❌ Rejected - Please retry
+                                  {t('tasks.rejectedRetry')}
                                 </>
                               )}
                             </div>
